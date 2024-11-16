@@ -1,9 +1,4 @@
-/* 
-File Name: index.css
-Student's Name: Manzar Shikhaliyeva
-Student ID: 301398294
-Date: 2024-09-26
-*/
+
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -49,7 +44,7 @@ Date: 2024-09-26
   transition: border-color 0.25s;
  }
  button:hover {
-  border-color: #646cff;
+  border-color: #f0f0f5;
  }
  button:focus,
  button:focus-visible {
@@ -71,4 +66,7 @@ Date: 2024-09-26
  float:right;
  font-size:x-large;
  }
+ .inputError{
+  background-color: red;
+}
 

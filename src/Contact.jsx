@@ -32,23 +32,20 @@ const Contact = () => {
 
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h1>Contact Me</h1>
+      <h1 style={{ color: '#08C2FF' }}>Contact Us</h1>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <div style={{ width: '50%' }}>
           
           <div style={{ marginBottom: '20px' }}>
-            <p><b>Email:</b> manzar242@gmail.com</p>
-            <p><b>Phone:</b> +1 437 995 2848</p>
-            <p><b>Address:</b> 10 Meadowglen Pl, Scarborough - ON, Canada</p>
+            <p><b>Email:</b> THTteam@gmail.com</p>
+            <p><b>Phone:</b> +1 234 567 89 00</p>
+            <p><b>Address:</b> ON, Canada</p>
 
-            
-              <a href="https://www.linkedin.com/in/manzar-shikhaliyeva-5a2168330/" target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </a>
+      
           </div>
           
           <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '20px' }}>
-            <h3>Send Me a Message</h3>
+            <h3>Send Us a Message. We will contact with you in a short time</h3>
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: '10px' }}>
                 <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />

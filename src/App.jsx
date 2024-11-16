@@ -1,13 +1,3 @@
-/* 
-File Name: App.jsx
-Student's Name: Manzar Shikhaliyeva
-Student ID: 301398294
-Date: 2024-09-26
-*/
-
-
-
-
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 //import { ThemeProvider } from '@material-ui/styles';
