@@ -1,52 +1,130 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
+import Button from '@material-ui/core/Button';
+import auth from '../lib/auth-helper';
 
 
 const headerStyle = {
   backgroundColor: 'black',
-  color: 'white',
   textAlign: 'center',
-  padding: '0.5em 0'
-};
-
-const titleStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  textDecoration: 'none',
-  color: 'white'
+  padding: '2em 0',  
+  height: 'auto', 
 };
 
 const logoStyle = {
-  width: '1200px',
-  padding : '0 px'
+  width: '400px',
+  maxWidth: '100%',
+  height: 'auto',
+};
+
+const appBarStyle = {
+  backgroundColor: '#333', 
+  height: '50px', 
+};
+
+const navLinkStyle = (isActive) => ({
+  color: isActive ? '#ff4081' : '#08C2FF',
+  textDecoration: 'none',
+  margin: '0 10px',
+  fontSize: '14px', 
+});
+
+
+const isActive = (location, path) => {
+  return location.pathname === path;
 };
 
 
 export default function Layout() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <>
+      {}
       <header style={headerStyle}>
-        <h1 style={titleStyle}>
-          <Link to="/" style={titleStyle}>
-            <img
-              src="./images/Logo1.png"
-              alt="My Logo"
-              style={logoStyle}
-            />
-          </Link>
-        </h1>
+        <Link to="/">
+          <img
+            src="./images/Logo1.png"
+            alt="My Logo"
+            style={logoStyle}
+          />
+        </Link>
       </header>
-      
-      <nav style={{float: 'left', fontsize: 'x-large'}}>
-        <Link style={{color: '#08C2FF'}} to="/">Home</Link> | 
-        <Link style={{color: '#08C2FF'}} to="/AboutUs">About Us</Link> | 
-        <Link style={{color: '#08C2FF'}} to="/ActivitySuggestions">Activity Suggestions</Link> | 
-        <Link style={{color: '#08C2FF'}} to="/TripPlanner">Trip Planner</Link> | 
-        <Link style={{color: '#08C2FF'}} to="/Contact">Contact</Link> |
-        <Link style={{color: '#08C2FF'}} to="/WeatherForecast">Weather Forecast</Link>
-      </nav>
+
+      {}
+      <AppBar position="static" style={appBarStyle}>
+        <Toolbar style={{ minHeight: '50px', padding: '0 10px' }}>
+          <Typography variant="h6" color="inherit" style={{ flexGrow: 1, fontSize: '16px' }}>
+          </Typography>
+
+          <Link to="/">
+            <IconButton aria-label="Home" style={navLinkStyle(isActive(location, "/"))}>
+              <HomeIcon />
+            </IconButton>
+          </Link>
+
+          <Link to="/AboutUs" style={navLinkStyle(isActive(location, "/AboutUs"))}>
+            About Us
+          </Link>
+
+          <Link to="/ActivitySuggestions" style={navLinkStyle(isActive(location, "/ActivitySuggestions"))}>
+            Activity Suggestions
+          </Link>
+
+          <Link to="/TripPlanner" style={navLinkStyle(isActive(location, "/TripPlanner"))}>
+            Trip Planner
+          </Link>
+
+          <Link to="/WeatherForecast" style={navLinkStyle(isActive(location, "/WeatherForecast"))}>
+            Weather Forecast
+          </Link>
+
+          <Link to="/Contact" style={navLinkStyle(isActive(location, "/Contact"))}>
+            Contact
+          </Link>
+
+          <Link to="/users" style={navLinkStyle(isActive(location, "/users"))}>
+            Users
+          </Link>
+
+          {!auth.isAuthenticated() && (
+            <>
+              <Link to="/signup" style={navLinkStyle(isActive(location, "/signup"))}>
+                Sign Up
+              </Link>
+              <Link to="/signin" style={navLinkStyle(isActive(location, "/signin"))}>
+                Sign In
+              </Link>
+            </>
+          )}
+
+          {auth.isAuthenticated() && (
+            <>
+              <Link
+                to={`/user/${auth.isAuthenticated().user._id}`}
+                style={navLinkStyle(isActive(location, `/user/${auth.isAuthenticated().user._id}`))}
+              >
+                My Profile
+              </Link>
+              <Button
+                color="inherit"
+                onClick={() => {
+                  auth.clearJWT(() => navigate('/'));
+                }}
+                style={{ fontSize: '14px', color: '#ffffff' }} 
+              >
+                Sign Out
+              </Button>
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
     </>
   );
 }
