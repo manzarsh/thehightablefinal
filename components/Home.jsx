@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <div className={classes.container}>
-      <h1 className={classes.title} style={{color: '#08C2FF', fontSize: '1.8em'}}>Weather Based Tourist Guide</h1>
+      <h1 className={classes.title} style={{color: '#08C2FF', fontSize: '1.5em'}}>Weather Based Tourist Guide</h1>
       <p className={classes.paragraph} >
         Welcome to the Weather based Tourist Guide Application.
       </p>

@@ -39,6 +39,7 @@ export default function WeatherForecast() {
       textAlign: 'center',
       padding: '20px',
     },
+  
     searchBar: {
       marginBottom: '20px',
     },
@@ -106,6 +107,13 @@ export default function WeatherForecast() {
           <p>
             <strong>Wind Speed:</strong> {weatherData.wind.speed} m/s
           </p>
+          <img 
+            src="your-image.jpg" 
+            alt="Weather Icon"
+            width="400" 
+            height="300" 
+            loading="lazy"
+          />
         </div>
       )}
     </div>

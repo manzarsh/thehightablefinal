@@ -19,7 +19,11 @@ export default defineConfig({
     },
     },
     build: {
+<<<<<<< HEAD
       outDir: '../dist',
+=======
+      outDir: '../dist/app',
+>>>>>>> cd967e6a1a4e31a4ca7d48fa46d1f81f66be5485
     manifest: true,
     rollupOptions: {
     input: "./src/main.jsx",
